@@ -1,0 +1,21 @@
+# fly.toml — Fly.io deployment config
+# Generated for Telegram Re-Upload Bot
+
+app = "telegram-reupload-bot"   # ← Change this to your app name
+primary_region = "sin"          # Singapore — closest to Telegram servers
+                                # Other options: fra (Frankfurt), iad (US East)
+
+[build]
+  # No Dockerfile needed — uses nixpacks auto-detection
+
+[processes]
+  app = "python bot.py"
+
+[[services]]
+  # No HTTP port needed — this is a background worker
+  # Fly.io will keep it running as a long-running process
+
+[env]
+  # Non-secret env vars go here
+  # Secrets (API_ID, API_HASH, BOT_TOKEN, SESSION_STRING) go via:
+  #   fly secrets set KEY=value
